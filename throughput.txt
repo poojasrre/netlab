@@ -1,0 +1,23 @@
+BEGIN {
+bytes_recvd= 0;
+}
+  {
+action = $1;
+time = $2;
+from = $3;
+to = $4;
+type = $5;
+pkt_size = $6;
+flow_id = $8;
+src = $9;
+dst = $10;
+sequence_n0 = $11;
+pkt_id = $12;
+if (action=="r")
+{bytes_recvd=bytes_recvd+1;
+}
+}
+END
+{
+printf("%d/n",bytes_recvd);
+}
